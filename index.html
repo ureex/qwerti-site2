@@ -1,95 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qwerti — Swap & Bridge</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Swap & Bridge — Powered by Qwerti</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-<style>
-body{
-  margin:0;
-  font-family:'Syne',sans-serif;
-  background:#050810;
-  color:#e8f4ff;
-}
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #050810;
+      --border: rgba(99,210,255,0.13);
+      --glow:   #63d2ff;
+      --glow2:  #a06cff;
+      --accent: #00f5c4;
+      --text:   #e8f4ff;
+      --muted:  #6b8caa;
+      --card:   rgba(12,17,32,0.9);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-/* NAV */
-nav{
-  display:flex;
-  justify-content:space-between;
-  padding:20px 30px;
-}
-.logo{
-  font-weight:800;
-  background:linear-gradient(90deg,#63d2ff,#00f5c4);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-nav a{color:#63d2ff;text-decoration:none}
+    .mesh {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% 10%, rgba(99,210,255,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 90% 80%, rgba(160,108,255,.09) 0%, transparent 60%);
+    }
 
-/* HERO */
-#hero{
-  text-align:center;
-  padding:120px 20px 40px;
-}
-#hero h1{font-size:3rem;margin-bottom:10px}
-#hero p{color:#6b8caa}
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(5,8,16,.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
 
-/* CTA BUTTON */
-.cta-btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:14px 28px;
-  border-radius:10px;
-  background:linear-gradient(135deg,#63d2ff,#a06cff);
-  color:#050810;
-  font-weight:800;
-  text-decoration:none;
-}
+    .logo {
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--glow), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:40px;
-  color:#6b8caa;
-}
-</style>
+    #hero {
+      padding: 120px 20px;
+      text-align: center;
+    }
 
-<!-- 🔥 QWERTI OFFICIAL WIDGET -->
-<script
-  src="https://widget.qwerti.ai/buy.js"
-  data-token="6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN"
-  data-chain="792703809"
-  data-campaign="sol-8453-36545"
-  data-position="bottom-right"
-  data-auto-open="false"
-  data-widget="qwerti-widget">
-</script>
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+    }
+
+    .hero-sub {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+
+    .cta-btn {
+      display:inline-block;
+      margin-top:20px;
+      padding:14px 28px;
+      border-radius:10px;
+      background:linear-gradient(135deg,#63d2ff,#a06cff);
+      color:#050810;
+      font-weight:800;
+      text-decoration:none;
+    }
+
+    #swap {
+      padding: 40px 20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .widget-wrapper {
+      width:100%;
+      max-width:460px;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid var(--border);
+    }
+
+    iframe {
+      width:100%;
+      height:580px;
+      border:none;
+    }
+
+    footer {
+      text-align:center;
+      padding:40px;
+      color:var(--muted);
+    }
+  </style>
+
+  <!-- 🔥 OFFICIAL QWERTI WIDGET (CORRECT) -->
+  <script
+    src="https://widget.qwerti.ai/buy.js"
+    data-token="0x311935cd80b76769bf2ecc9d8ab7635b2139cf82"
+    data-chain="8453"
+    data-campaign="sol-8453-36545"
+    data-position="bottom-right"
+    data-auto-open="false"
+    data-widget="qwerti-widget">
+  </script>
 
 </head>
 
 <body>
 
+<div class="mesh"></div>
+
 <nav>
-  <div class="logo">Qwerti.ai</div>
-  <a href="#swap">Swap</a>
+  <div class="logo">SwapBridge</div>
 </nav>
 
 <section id="hero">
   <h1>Swap & Bridge</h1>
-  <p>Buy your token instantly using Qwerti</p>
+  <p class="hero-sub">Buy your token instantly</p>
 
-  <!-- 🔥 OPEN WIDGET BUTTON -->
-  <a href="#" class="cta-btn" onclick="Qwerti.openWidget()">
+  <!-- 🔥 OPEN WIDGET -->
+  <a href="#" onclick="Qwerti.openWidget()" class="cta-btn">
     🚀 Buy / Sell Token
   </a>
 </section>
 
+<section id="swap">
+  <div class="widget-wrapper">
+    <iframe 
+      src="https://app.qwerti.ai/buy/0x311935cd80b76769bf2ecc9d8ab7635b2139cf82/8453?campaign=sol-8453-36545">
+    </iframe>
+  </div>
+</section>
+
 <footer>
-Qwerti.ai — Swap & Bridge
+SwapBridge — Powered by Qwerti
 </footer>
 
 </body>
